@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление объёма додекаэдра</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Вычисление объёма додекаэдра</h1>
+    <label for="edge">Введите длину ребра:</label>
+    <input type="number" id="edge" step="any" min="0">
+    <a href="#" onclick="calculatevolume()">Рассчитать</a>
+    <p id="result"></p>
+    <script>
+        function dodekaedrvolume(edge) {
+            if (edge <= 0) {
+                return "Ребро должно быть больше или равно нулю";
+            }
+            const phi = (1 + Math.sqrt(5)) / 2;
+            const volume = (15 + 7 * phi) / 4 * Math.pow(edge, 3);
+            return volume.toFixed(3);
+        }
+        function calculatevolume() {
+            const edge = parseFloat(document.getElementById("edge").value);
+            const result = dodekaedrvolume(edge);
+            document.getElementById("result").innerText = "Объём додекаэдра равен: " + result;
+        }
+    </script>
+</body>
+</html>
